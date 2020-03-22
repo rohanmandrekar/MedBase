@@ -1,0 +1,181 @@
+@font-face { 
+  font-family: light; 
+  src: url('BebasNeue-Light.otf');
+} 
+@font-face { 
+  font-family: book; 
+  src: url('BebasNeue-Book.otf');
+} 
+
+.stage1 {
+  -webkit-perspective: 1000; 
+}
+
+.flashcard1 {
+  height: 90px;  
+  width: 300px; 
+  margin-top: 10px;
+  -webkit-transform-style: preserve-3d;  
+  transition: all 0.3s;               
+  -webkit-transition: all 1s;
+}
+
+.flipped1, .back1 {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg); 
+}
+
+.front1, .back1 {
+  height: 90px;          
+  width: 300px;
+  position: absolute;    
+  text-align: center;   
+  -webkit-backface-visibility: hidden;       
+}
+
+.front1 p, .back1 p {     
+  font-size: 13em;
+}
+
+.stage {
+  -webkit-perspective: 1000; 
+}
+
+.flashcard {
+  height: 350px;  
+  width: 500px; 
+  margin-top: 10px;
+  -webkit-transform-style: preserve-3d;  
+  transition: all 0.3s;               
+  -webkit-transition: all 1s;
+}
+
+.flipped, .back {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg); 
+}
+
+.front, .back {
+  height: 300px;          
+  width: 500px;
+  position: absolute;    
+  text-align: center;   
+  -webkit-backface-visibility: hidden;       
+}
+
+.front p, .back p {     
+  font-size: 3em;
+}
+
+body {
+  overflow-x: hidden;
+}
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #EA638C;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: white;
+}

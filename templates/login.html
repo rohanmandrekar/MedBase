@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="icon" href="/static/images/title.png" type="image/x-icon">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+
+<style>
+    .card { 
+        background-color: #f8f9fa;
+        width: 40%;
+        float: center;
+        margin-top: 7%;
+        margin-left: 30%;
+        margin-right: 30%; 
+    }
+    .card-block { 
+        padding: 50px;
+    }
+</style>
+
+</head>
+<body background="/static/images/backgroundimg.png">
+
+<div class="card">
+    <div class="card-block">
+
+        <div class="text-center">
+                <img src="/static/images/logo.png" height="105" width="119"><br>
+        </div>
+
+        <form method="POST" action="/homedefault">
+        <div class="md-form">
+            <i class="fa fa-envelope prefix"></i>
+            <input type="email" name="email" class="form-control">
+            <label>Email</label>
+        </div>
+
+        <div class="md-form">
+            <i class="fa fa-lock prefix"></i>
+            <input type="password" name="pswd" class="form-control">
+            <label>Password</label>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-dark">Login  <i class="fa fa-arrow-right"></i></button></form><br>
+            <a style="color:#17a2b8;" href="/forgot" id="forgotpass" href="#">Forgot Password?</a>
+        </div>
+    </form>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="options">
+            Dont have an account? <a style="color:#17a2b8" href="/signupuser" id="forgotpass" href="#">Sign Up</a>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    
+$(document).ready(function() {
+    {% if(logflag==0) %}
+        alert('Invalid Credentials');
+    {% endif %}
+  });
+
+</script>
+
+</body>
+</html>

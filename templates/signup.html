@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="icon" href="/static/images/title.png" type="image/x-icon">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+
+<style>
+    .card { 
+        background-color: #f8f9fa;
+        width: 40%;
+        float: center;
+        margin-top: 7%;
+        margin-left: 30%;
+        margin-right: 30%; 
+    }
+    .card-block { 
+        padding: 50px;
+    }
+</style>
+
+</head>
+<body background="/static/images/backgroundimg.png">
+
+<div class="card">
+    <div class="card-block">
+
+        <div class="text-center">
+                <img src="/static/images/logo.png" height="105" width="119"><br>
+        </div>
+
+        <form method="POST" action="/newuser">
+            <div class="md-form">
+                    <i class="fa fa-user prefix"></i>
+                    <input type="text" name="name" class="form-control">
+                    <label>Name</label>
+                </div>
+        
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="email" name="email" class="form-control">
+                    <label>Email</label>
+                </div>
+        
+                <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    <input type="password" name="pswd" id="txtPassword" class="form-control">
+                    <label>Password</label>
+                </div>
+        
+                <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    <input type="password" name="cpswd" id="txtConfirmPassword" class="form-control">
+                    <label> Confirm Password</label>
+                </div>
+        
+                <div class="text-center">
+                    <button class="btn btn-dark" id="btnSubmit">Signup</button>
+                </div>
+    </form>
+    
+    </div>
+
+    <div class="modal-footer">
+            <div class="options">
+                <a id="backtologin" href="/">Back to Login</a>
+            </div>
+        </div>   
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- <script>
+        $("#forgotpass").click(function(){
+            document.getElementById("formforgot").submit();    
+        });
+    </script> -->
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+    {% if(signupflag==0) %}
+        alert('Error');
+    {% endif %}
+  });
+        $(function () {
+            $("#btnSubmit").click(function () {
+                var password = $("#txtPassword").val();
+                var confirmPassword = $("#txtConfirmPassword").val();
+                if (password != confirmPassword) {
+                    alert("Passwords do not match");
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+
+</body>
+</html>

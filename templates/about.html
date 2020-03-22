@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MedBase</title>
+  <link rel="icon" href="/static/images/title.png" type="image/x-icon">
+
+  <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styledoc.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+
+
+  </head>
+
+<body>
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading d-flex justify-content-center"><img src="/static/images/logo.png" height="120" width="137"></div>
+        <div class="list-group list-group-flush">
+            <a href="/home" id="btnhome" class="list-group-item list-group-item-action bg-light">Home</a>
+            <a href="/dashboard" id="btnshow" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+            <a id="btnadd" href="/addnew" class="list-group-item list-group-item-action bg-light">Add New Patient</a>
+            <a href="/stats" id="btnstats"class="list-group-item list-group-item-action bg-light">Statistics</a>
+            <a style="background-color: #17a2b8;color: white;" id="btnabout" href="/about" class="list-group-item list-group-item-action">About The Developers<img align="right" src="/static/images/arrow1.png" height="23" width="20"></a>
+            <form id="formsignout" action="/signout"><a id="btnsignout" class="list-group-item list-group-item-action bg-light">Sign Out</a></form>
+        </div>
+      </div>
+   
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          
+          <img id="menu-toggle" src="https://img.icons8.com/ios/26/000000/menu.png">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ username }}  
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" onclick="alert('Username: {{username}}\nUID: {{uid}}')">Info</a>
+                <a class="dropdown-item" href="#">Settings</a>       
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="container">
+
+   <br>
+
+    <div class="row active-with-click">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <article class="material-card Red">
+                <h2>
+                    <span><i class="fa fa-fw fa-star"></i> Yash Choksi</span>
+                    <!-- <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        The Deer Hunter
+                    </strong> -->
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img class="img-responsive" src="/static/images/yash3.jpg" height="400" width="420">
+                    </div>
+                    <div class="mc-description">
+                        Pursuing B.Tech in Computers at Mukesh Patel School Of Technology and Management Education.    
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a href="https://www.facebook.com/choksi.yash.12" target="_blank" class="fa fa-fw fa-facebook"></a>
+                    <!-- <a class="fa fa-fw fa-twitter"></a> -->
+                    <a href="" target="" class="fa fa-fw fa-linkedin"></a>
+                    <!-- <a class="fa fa-fw fa-google-plus"></a> -->
+                    <a href="https://www.instagram.com/yash.choksi/" target="_blank" class="fa fa-fw fa-instagram"></a>
+                </div>
+            </article>
+        </div>
+
+       
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <article class="material-card Light-Blue">
+                <h2>
+                    <span><i class="fa fa-fw fa-star"></i> Rohan Mandrekar</span>
+                  <!--   <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        Pulp Fiction
+                    </strong> -->
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img class="img-responsive" src="/static/images/rohan.jpg" height="325" width="445">
+                    </div>
+                    <div class="mc-description">
+                    Pursuing B.Tech in Computers at Mukesh Patel School Of Technology and Management Education.
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a href="https://www.facebook.com/rmaskaban" target="_blank" class="fa fa-fw fa-facebook"></a>
+                    <!-- <a class="fa fa-fw fa-twitter"></a> -->
+                    <a href="https://www.linkedin.com/in/rohan-mandrekar-a01409181/" target="_blank" class="fa fa-fw fa-linkedin"></a>
+                    <!-- <a class="fa fa-fw fa-google-plus"></a> -->
+                    <a href="https://www.instagram.com/itsrohanagain/" target="_blank" class="fa fa-fw fa-instagram"></a>
+                </div>
+            </article>
+        </div>
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <article class="material-card Green">
+                <h2>
+                    <span><i class="fa fa-fw fa-star"></i> Hasnain Roopawalla</span>
+                    <!-- <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        Her
+                    </strong> -->
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img class="img-responsive" src="/static/images/hasu.jpg" height="350" width="355">
+                    </div>
+                    <div class="mc-description">
+                        Pursuing B.Tech in Computers at Mukesh Patel School Of Technology and Management Education.
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a href="https://www.facebook.com/hasnain.roopawalla" target="_blank" class="fa fa-fw fa-facebook"></a>
+                    <!-- <a class="fa fa-fw fa-twitter"></a> -->
+                    <a href="https://www.linkedin.com/in/hasnain-roopawalla-017802158/" target="_blank" class="fa fa-fw fa-linkedin"></a>
+                    <!-- <a class="fa fa-fw fa-google-plus"></a> -->
+                    <a href="https://www.instagram.com/hasnainroopawalla/" target="_blank" class="fa fa-fw fa-instagram"></a>
+                </div>
+            </article>
+        </div>
+       
+    </div>
+</section>
+
+      
+    </div>
+  <script>
+   
+
+    $("#menu-toggle").mouseover(function (e) {    
+        $(this).css('opacity',0.5);
+    }).mouseout(function (e) {
+      $(this).css('opacity',1);
+    });
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    
+    $("#btnsignout").click(function(){
+      var c = confirm("Sign Out?");
+      if (c == true) {
+        document.getElementById("formsignout").submit();  
+        }
+    });
+    
+    $(function() {
+    $('.material-card > .mc-btn-action').click(function () {
+        var card = $(this).parent('.material-card');
+        var icon = $(this).children('i');
+        icon.addClass('fa-spin-fast');
+
+        if (card.hasClass('mc-active')) {
+            card.removeClass('mc-active');
+
+            window.setTimeout(function() {
+                icon
+                    .removeClass('fa-arrow-left')
+                    .removeClass('fa-spin-fast')
+                    .addClass('fa-bars');
+
+            }, 800);
+        } else {
+            card.addClass('mc-active');
+
+            window.setTimeout(function() {
+                icon
+                    .removeClass('fa-bars')
+                    .removeClass('fa-spin-fast')
+                    .addClass('fa-arrow-left');
+
+            }, 800);
+        }
+    });
+ });
+    </script>
+
+</body>
+
+</html>
